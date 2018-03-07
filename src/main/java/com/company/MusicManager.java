@@ -10,14 +10,27 @@ public class MusicManager {
 	private String shopName;
 	private  List<MusicalInstrument> instrumentList = new LinkedList<>();
 
-	public MusicManager() {
-	}
 
-	public  MusicManager(final String address, final String shopName, final List<MusicalInstrument> instrumentList) {
+	public  MusicManager(final String address, final String shopName) {
 		super();
 		setAddress(address);
 		setShopName(shopName);
-		setInstrumentList(instrumentList);
+	}
+
+	@Override
+	public String toString() {
+		return "MusicManager{" +
+				"address='" + getAddress() + '\'' +
+				", shopName='" + getShopName() + '\'' +
+				'}';
+	}
+
+	public  static void printList(final List<MusicalInstrument> List) {
+		List.forEach((MusicalInstrument x) -> {
+			System.out.println(x.toString());
+
+		});
+
 	}
 
 	public final List<MusicalInstrument> findByType(final TypeInstrument instrumentType) {
@@ -32,7 +45,7 @@ public class MusicManager {
 	}
 
 	public final List<MusicalInstrument> sortByWeight(List<MusicalInstrument> result) {
-		result.sort(Comparator.comparingInt(MusicalInstrument::getWeight));
+		result.sort(Comparator.comparingInt(MusicalInstrument::getWeight).reversed());
 		return result;
 	}
 

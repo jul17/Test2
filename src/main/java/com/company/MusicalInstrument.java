@@ -1,14 +1,40 @@
 package com.company;
 
-public abstract class MusicalInstrument {
+public class MusicalInstrument {
 
 	private String name;
 	private String countryFrom;
 	private double price;
 	private String guarantee;
 	private int weight;
+	private TypeInstrument typeInstruments;
 
-	public abstract TypeInstrument getTypeInstruments();
+
+	public MusicalInstrument() {
+	}
+
+	public MusicalInstrument(String name, String countryFrom, double price, String guarantee, int weight) {
+		this.name = name;
+		this.countryFrom = countryFrom;
+		this.price = price;
+		this.guarantee = guarantee;
+		this.weight = weight;
+	}
+
+	@Override
+	public String toString() {
+		return "MusicalInstrument{" +
+				"name='" + name + '\'' +
+				", countryFrom='" + countryFrom + '\'' +
+				", price=" + price +
+				", guarantee='" + guarantee + '\'' +
+				", weight=" + weight +
+				'}';
+	}
+
+	public TypeInstrument getTypeInstruments(){
+		return typeInstruments;
+	}
 
 	public final void setName(final String name) {
 		this.name = name;
