@@ -2,24 +2,17 @@ package com.company;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.runner.RunWith;
 
-import static com.company.MusicManager.printList;
-
-import java.util.LinkedList;
+import java.io.File;
 import java.util.List;
-
 import static org.junit.Assert.*;
 
-//@RunWith(JUnitPlatform.class)
-//@IncludeEngines("junit-jupiter")
+
 
 public class MusicManagerTest {
     private  MusicManager musicalManager = new MusicManager("Lviv", "Stradivarius");
-    private  DrumType drumType = new DrumType("Kek", "Ukraine",3.4, "Long", 55, 5);
-    private  KeyboardType keyboardType = new KeyboardType("Lol", "England", 3.3, "Norm", 3,4);
+    private  DrumType drumType = new DrumType("Drum Kit", "Ukraine",3.4, "6 mounth", 55, 5);
+    private  KeyboardType keyboardType = new KeyboardType("Keyboard", "England", 3.3, "3 mounth", 3,4);
     private MusicalInstrument musicalInstrument = new MusicalInstrument("Hhh", "Deutsch", 5.5,"Good",5) {
         @Override
         public TypeInstrument getTypeInstruments() {
@@ -27,11 +20,11 @@ public class MusicManagerTest {
         }
     };
 
-    private  StringType stringType = new StringType("Io","France", 3.3, "Level", 4,4);
-    private  Wind wind = new Wind("Lk", "Austria", 5.5, "Normal", 4,"Long");
+    private  StringType stringType = new StringType("Vilion","France", 3.3, "8 mounth", 4,4);
+    private  Wind wind = new Wind("Tube", "Austria", 5.5, "3 mounth", 4,"Long");
     private List<MusicalInstrument> testList;
-
-
+    private static final MusicalWriter writer = new MusicalWriter();
+    private static final File file = new File("C:\\Java_Payton\\musicalInstruments.csv");
 
     @Before
      public void addInstrumentsForTest() {
@@ -67,6 +60,13 @@ public class MusicManagerTest {
         assertEquals(wind.getWeight(), testList.get(2).getWeight());
         assertEquals(keyboardType.getWeight(), testList.get(3).getWeight());
 
+
+    }
+
+    @Test
+    public void writeToFile(){
+        writer.writeToFile(musicalManager.getInstrumentList());
+        assertEquals(true, file.exists());
 
     }
 }
