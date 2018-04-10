@@ -1,0 +1,11 @@
+com\company\MusicalWriter.class
+com\company\MusicalInstrument.class
+com\company\MusicManager.class
+com\company\MusicService.class
+com\company\KeyboardType.class
+com\company\TypeInstrument.class
+com\company\MusicalController.class
+com\company\rest\config\JaxRsConfig.class
+com\company\DrumType.class
+com\company\Wind.class
+com\company\StringType.class
